@@ -138,8 +138,8 @@ namespace я_и_толя
                 TextB.Text += 1.0 / znachenie;
             }
             else if (sender == multiply)
-            { 
-            
+            {
+                int i = 2;
             }
             else if (sender == minus)
             {
