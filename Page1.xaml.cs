@@ -108,6 +108,20 @@ namespace я_и_толя
                 TextB.Text += Cos(grad);
 
             }
+            else if (sender == sin)
+            {
+                znachenie = Convert.ToDouble(TextB.Text);
+                TextB.Clear();
+                var grad = znachenie * 3.1415926535897931 / 180;
+                TextB.Text += SQRTkv(1- Power(Cos(grad), 2));
+            }
+            else if (sender == tg)
+            {
+                znachenie = Convert.ToDouble(TextB.Text);
+                TextB.Clear();
+                var grad = znachenie * 3.1415926535897931 / 180;
+                TextB.Text += Cos(grad)/SQRTkv(1 - Power(Cos(grad), 2));
+            }
             else if (sender == Ostatok)
             {
                 znachenie = Convert.ToDouble(TextB.Text)/100;
@@ -139,7 +153,7 @@ namespace я_и_толя
             }
             else if (sender == multiply)
             {
-                int i = 2;
+
             }
             else if (sender == minus)
             {
@@ -187,19 +201,14 @@ namespace я_и_толя
         static double Power(double x, double n)
         {
             if (n == 0)
-            {
                 return 1;
-            }
-
             if (n % 2 == 0)
-            {
+            { 
                 var p = Power(x, n / 2);
                 return p * p;
             }
             else
-            {
                 return x * Power(x, n - 1);
-            }
         }
         //Очистка
         static string Clear(string value)
@@ -219,6 +228,7 @@ namespace я_и_толя
                 return t;
             return t + Cos(x, n + 1, precision);
         }
+        //Модуль
         static double Abs(double num)
         {
             if (num >= 0)
