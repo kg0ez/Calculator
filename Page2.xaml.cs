@@ -39,7 +39,7 @@ namespace я_и_толя
         {
             double h = (b - a) / n;
             double sum = Func(a) + Func(b);
-            for (int i = 0; i < n - 1; i++)
+            for (int i = 0; i <= n - 1; i++)
             {
                 sum += 2 * Func(a + i * h);
             }
@@ -52,10 +52,10 @@ namespace я_и_толя
             double h = (b - a) / n;
             double sum = Func(a)+Func(b);
             int k;
-            for (int i = 0; i < n - 1; i++)
+            for (int i = 0; i <= n - 1; i++)
             {
                 k = 2 + 2 * (i % 2);
-                sum += 2 * Func(a + i * h);
+                sum += k * Func(a + i * h);
             }
             sum *= h / 3;
             return sum;
