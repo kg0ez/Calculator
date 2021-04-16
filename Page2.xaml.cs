@@ -38,7 +38,7 @@ namespace я_и_толя
         public static double TrapecMethod(double a, double b, int n)
         {
             double h = (b - a) / n;
-            double sum = 0;
+            double sum = Func(a) + Func(b);
             for (int i = 0; i < n - 1; i++)
             {
                 sum += 2 * Func(a + i * h);
@@ -47,12 +47,34 @@ namespace я_и_толя
             return sum;
 
         }
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        public static double SimpsonMethod(double a, double b, int n)
+        {
+            double h = (b - a) / n;
+            double sum = Func(a)+Func(b);
+            int k;
+            for (int i = 0; i < n - 1; i++)
+            {
+                k = 2 + 2 * (i % 2);
+                sum += 2 * Func(a + i * h);
+            }
+            sum *= h / 3;
+            return sum;
+
+        }
+        private void Button_Trapec(object sender, RoutedEventArgs e)
         {
             if (TrBut.IsChecked == true)
             {
                 PgTwo_Text.Text = Convert.ToString(TrapecMethod(Convert.ToDouble(Trapec_a.Text), Convert.ToDouble(Trapec_B.Text), Convert.ToInt32(Trapec_N.Text)));
             }
         }
+        private void Button_Simpson(object sender, RoutedEventArgs e)
+        {
+            if (SimpBut.IsChecked == true)
+            {
+                PgTwo_Text.Text = Convert.ToString(SimpsonMethod(Convert.ToDouble(Simp_a.Text), Convert.ToDouble(Simp_b.Text), Convert.ToInt32(Simp_n.Text)));
+            }
+        }
+
     }
 }
