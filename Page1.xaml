@@ -88,7 +88,7 @@ VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontWeight
         <Button Width="55" Height="55" Content="7" Grid.Column="1" Grid.Row="3" Template="{StaticResource CircleForm}" Style="{StaticResource MouseIsOut}"/>
         <Button Width="55" Height="55" Content="8" Grid.Column="2" Grid.Row="3" Template="{StaticResource CircleForm}" Style="{StaticResource MouseIsOut}"/>
         <Button Width="55" Height="55" Content="9" Grid.Column="3" Grid.Row="3" Template="{StaticResource CircleForm}" Style="{StaticResource MouseIsOut}"/>
-        <Button Content="0" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Template="{StaticResource btTemplate}" Style="{StaticResource MouseIsOut}" FontSize="25" FontFamily="Arial Black" Foreground="White" Margin="1.4,0.4,80.6,-0.4"/>
+        <Button Content="0" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" x:Name="null" Template="{StaticResource btTemplate}" Style="{StaticResource MouseIsOut}" FontSize="25" FontFamily="Arial Black" Foreground="White" Margin="1.4,0.4,80.6,-0.4"/>
         <Button Width="55" Height="55" Content="," Grid.Column="3" Grid.Row="6" x:Name="comma" Template="{StaticResource CircleForm}" Style="{StaticResource MouseIsOut}"/>
         <Button Width="55" Height="55" Content="/" Grid.Column="4" Grid.Row="2" x:Name="division" Template="{StaticResource CircleFormOrange}" Style="{StaticResource MouseIsOut}"/>
         <Button Width="55" Height="55" Content="Х" Grid.Column="4" Grid.Row="3" x:Name="multiply" Template="{StaticResource CircleFormOrange}" Style="{StaticResource MouseIsOut}"/>
@@ -109,7 +109,7 @@ VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontWeight
         <Button Width="55" Height="55" Content="ⁿ√x" Grid.Row="5" Grid.Column="7" x:Name="SQRTN" Template="{StaticResource CircleForm2}" Style="{StaticResource MouseIsOut}" />
         <Button Width="55" Height="55" Content="xⁿ" Grid.Row="6" Grid.Column="7" x:Name="POWN" Template="{StaticResource CircleForm2}" Style="{StaticResource MouseIsOut}" />
         <Button Width="55" Height="55" Content="x!" Grid.Row="6" Grid.Column="5" x:Name="Facktorial" Template="{StaticResource CircleForm2}" Style="{StaticResource MouseIsOut}" />
-        <Button Width="55" Height="55" Content="+/-" Grid.Row="2" Grid.Column="5" Template="{StaticResource CircleForm2}" Style="{StaticResource MouseIsOut}"/>
+        <Button Width="55" Height="55" Content="+/-" Grid.Row="2" Grid.Column="5" x:Name="MINUSorPLUS" Template="{StaticResource CircleForm2}" Style="{StaticResource MouseIsOut}"/>
         <Button Width="55" Height="55" Content="1/x" Grid.Row="5" Grid.Column="5" x:Name="Delenie" Template="{StaticResource CircleForm2}" Style="{StaticResource MouseIsOut}"/>
     </Grid>
 </Page>

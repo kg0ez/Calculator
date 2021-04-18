@@ -18,20 +18,20 @@ namespace я_и_толя
     /// <summary>
     /// Логика взаимодействия для Page1.xaml
     /// </summary>
-    
+
     public partial class Page1 : Page
     {
-        
+
 
         private void Расчёт_интегралов_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Page2());
-            
+
         }
         public double znachenie;
         public double sqrt234;
-        public double step, slogaemoe1 = 0, slogaemoe2 = 0, slogaemoe3 = 0, otvet=0;
-        public int quantity =0, onecomma=0;
+        public double step, slogaemoe1 = 0, slogaemoe2 = 0, slogaemoe3 = 0, otvet = 0;
+        public int quantity = 0, onecomma = 0, Min_Plus = 0;
         public Page1()
         {
             InitializeComponent();
@@ -58,14 +58,20 @@ namespace я_и_толя
                 TextB.Text = "";
             string text = TextB.Text;
             if (stroka == "C")
-            { 
+            {
                 TextB.Text = "0";
                 onecomma = 0;
             }
             else if (sender == pi)
-                TextB.Text += "3,14";
+            {
+                TextB.Clear();
+                TextB.Text += "3,141592653589793";
+            }
             else if (sender == button_e)
-                TextB.Text += "2,718";
+            {
+                TextB.Clear();
+                TextB.Text += "2,718281828459045"; 
+            }
             else if (sender == POWN || quantity == 1)
             {
                 if (quantity == 1)
@@ -113,18 +119,18 @@ namespace я_и_толя
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
                 var grad = znachenie * 3.1415926535897931 / 180;
-                TextB.Text += SQRTkv(1- Power(Cos(grad), 2));
+                TextB.Text += SQRTkv(1 - Power(Cos(grad), 2));
             }
             else if (sender == tg)
             {
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
                 var grad = znachenie * 3.1415926535897931 / 180;
-                TextB.Text += Cos(grad)/SQRTkv(1 - Power(Cos(grad), 2));
+                TextB.Text += Cos(grad) / SQRTkv(1 - Power(Cos(grad), 2));
             }
             else if (sender == Ostatok)
             {
-                znachenie = Convert.ToDouble(TextB.Text)/100;
+                znachenie = Convert.ToDouble(TextB.Text) / 100;
                 TextB.Clear();
                 TextB.Text += znachenie;
             }
@@ -151,13 +157,32 @@ namespace я_и_толя
                 TextB.Clear();
                 TextB.Text += 1.0 / znachenie;
             }
+            else if (sender == MINUSorPLUS)
+            {
+                int i = 1;
+                if (Min_Plus == 1 && i == 1)
+                {
+                    znachenie = -1 * double.Parse(TextB.Text);
+                    TextB.Clear();
+                    TextB.Text += znachenie;
+                    Min_Plus = 0;
+                    i--;
+                }
+                if (Min_Plus == 0 && i == 1)
+                {
+                    znachenie = double.Parse(TextB.Text);
+                    TextB.Text = "-";
+                    TextB.Text += znachenie;
+                    Min_Plus++;
+                }
+            }
             else if (sender == multiply)
             {
 
             }
             else if (sender == minus)
             {
-            
+
             }
             else if (sender == addition)
             {
@@ -167,6 +192,12 @@ namespace я_и_толя
             {
 
             }
+            else if (sender==ln)
+            {
+                znachenie = double.Parse(TextB.Text);
+                TextB.Clear();
+                TextB.Text += Lognat(znachenie);
+            }
             else if (sender == equally)
             {
                 TextB.Clear();
@@ -174,7 +205,7 @@ namespace я_и_толя
             }
             else if (sender != comma)
                 TextB.Text += stroka;
-            
+
         }
         //расчёт SQRT
         static public double SQRTkv(double number)
@@ -203,7 +234,7 @@ namespace я_и_толя
             if (n == 0)
                 return 1;
             if (n % 2 == 0)
-            { 
+            {
                 var p = Power(x, n / 2);
                 return p * p;
             }
@@ -241,7 +272,27 @@ namespace я_и_толя
                 return 1d;
             return num * Factorial(num - 1);
         }
+        static double Lognat(double x, int n =1, double znat = 1e-5)
+        {
+            var t = Power(-1, n+1) * Power(x -1, n) / n;
+            if (Abs(t)<znat)
+                return t;
+            return t +Lognat(x,n+1,znat);
+        }
+        //округление
+       /* static string Round(string x)
+        {
+            int legthn = x.Length;
+            double y = double.Parse(x);
+            double okr = y % 10;
+            double r = Clear(y);
+            if (okr>=5)
+            {
 
+            }
+            return x;
+        }
+       */
 
     }
 }
