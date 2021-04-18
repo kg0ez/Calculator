@@ -127,6 +127,7 @@ namespace я_и_толя
                 TextB.Clear();
                 var grad = znachenie * 3.1415926535897931 / 180;
                 TextB.Text += Cos(grad) / SQRTkv(1 - Power(Cos(grad), 2));
+                TextB.Text += SQRTkv(1 - Power(Cos(grad), 2))/Cos(grad);
             }
             else if (sender == Ostatok)
             {
@@ -210,7 +211,7 @@ namespace я_и_толя
         //расчёт SQRT
         static public double SQRTkv(double number)
         {
-            // number - число по корнем         
+            // number - число под корнем         
             double t;
             double result = number / 2;
             do
