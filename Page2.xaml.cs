@@ -24,7 +24,10 @@ namespace я_и_толя
         {
             InitializeComponent();
         }
-
+        private void To_function_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Function());
+        }
         private void But1_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Page1());

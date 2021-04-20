@@ -28,8 +28,8 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="PgTwo_Text" Grid.ColumnSpan="7" Background="#ffff" FontSize="16" FontFamily="Times New Roman" Padding="10 20 0 0" Margin="1.4,55,80.6,12.6" Grid.RowSpan="2" Grid.Column="1" />
-        <Button x:Name="But1" Grid.Column="5" Background="Orange" Click="But1_Click" Content="Назад" Margin="49.8,18,80.6,14.8" Grid.ColumnSpan="3" FontSize="15" FontWeight="Bold" Height="30"/>
+        <TextBox x:Name="PgTwo_Text" Grid.ColumnSpan="4" Background="#ffff" FontSize="16" FontFamily="Times New Roman" Padding="10 20 0 0" Margin="29,0.2,9.8,12.6" Grid.Column="3" Grid.Row="1" />
+        <Button x:Name="But1" Grid.Column="5" Background="Orange" Click="But1_Click" Content="Назад" Margin="39.8,20,9.8,14.8" Grid.ColumnSpan="2" FontSize="15" FontWeight="Bold" Height="30"/>
         <!--Метод трапеций-->
         <GroupBox Grid.ColumnSpan="6" Grid.Column="1" Header="Метод трапеций" Foreground="White" HorizontalAlignment="Left" Height="128" Grid.Row="2" Grid.RowSpan="3" VerticalAlignment="Top" Width="476" Opacity="0.8" FontSize="16" FontWeight="Bold" />
         <!--Предел а-->
@@ -55,7 +55,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        
+
         <!--Метод Симпсона-->
         <GroupBox Grid.ColumnSpan="6" Grid.Column="1" Header="Метод Симпсона" Foreground="White" HorizontalAlignment="Left" Margin="0 30 0 0" Height="128" Grid.Row="4" Grid.RowSpan="3" VerticalAlignment="Top" Width="476" Opacity="0.8" FontSize="16" FontWeight="Bold" />
         <!--Предел а-->
@@ -83,6 +83,15 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <!--vsvsvsvdsvd-->
+        <Button Grid.ColumnSpan="2" VerticalAlignment="Top" Margin="0.4,0.2,0,0" HorizontalAlignment="Left" Width="162" Height="52" Cursor="Hand" Click="To_function_Click" Grid.Column="1" Grid.Row="1" >
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Border Background="#FFFFD296"></Border>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Medium">Выбрать функцию ⋮</Label>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Page>
