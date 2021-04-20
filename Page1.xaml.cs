@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,8 +31,9 @@ namespace я_и_толя
         }
         public double znachenie;
         public double sqrt234;
-        public double step, slogaemoe1 = 0, slogaemoe2 = 0, slogaemoe3 = 0, otvet = 0;
-        public int quantity = 0, onecomma = 0, Min_Plus = 0;
+        public double step, otvet=0;
+        public int quantity = 0, onecomma = 0, Min_Plus = 0,kol=0;
+        public string D,D2, N1,N3;
         public Page1()
         {
             InitializeComponent();
@@ -56,7 +58,12 @@ namespace я_и_толя
             }
             else if (TextB.Text == "0")
                 TextB.Text = "";
-            string text = TextB.Text;
+            if (kol==2)
+            {
+                TextB.Clear();
+                kol = 1;
+            }
+            string text = TextB.Text, obrabotka=TextB.Text;
             if (stroka == "C")
             {
                 TextB.Text = "0";
@@ -70,7 +77,7 @@ namespace я_и_толя
             else if (sender == button_e)
             {
                 TextB.Clear();
-                TextB.Text += "2,718281828459045"; 
+                TextB.Text += "2,718281828459045";
             }
             else if (sender == POWN || quantity == 1)
             {
@@ -79,7 +86,7 @@ namespace я_и_толя
                     if (sender == back)
                     {
                         TextB.Clear();
-                        TextB.Text += Clear(text);
+                        TextB.Text += MathSyst.Clear(text);
                     }
                     else if (stroka != "=")
                         TextB.Text += stroka;
@@ -92,16 +99,15 @@ namespace я_и_толя
                 }
                 else if (stroka == "=")
                 {
-                    step = Convert.ToDouble(TextB.Text);
                     TextB.Clear();
                     if (step < 0)
                     {
                         step = step - 2 * step;
-                        double ex = 1.0 / Power(znachenie, step);
+                        double ex = 1.0 / MathSyst.Power(znachenie, step);
                         TextB.Text += ex;
                     }
                     else
-                        TextB.Text += Power(znachenie, step);
+                        TextB.Text += MathSyst.Power(znachenie, step);
                     quantity = 0;
                 }
 
@@ -111,7 +117,7 @@ namespace я_и_толя
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
                 var grad = znachenie * 3.1415926535897931 / 180;
-                TextB.Text += Cos(grad);
+                TextB.Text += MathSyst.Cos(grad);
 
             }
             else if (sender == sin)
@@ -119,15 +125,15 @@ namespace я_и_толя
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
                 var grad = znachenie * 3.1415926535897931 / 180;
-                TextB.Text += SQRTkv(1 - Power(Cos(grad), 2));
+                TextB.Text += MathSyst.SQRTkv(1 - MathSyst.Power(MathSyst.Cos(grad), 2));
             }
             else if (sender == tg)
             {
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
                 var grad = znachenie * 3.1415926535897931 / 180;
-                TextB.Text += Cos(grad) / SQRTkv(1 - Power(Cos(grad), 2));
-                TextB.Text += SQRTkv(1 - Power(Cos(grad), 2))/Cos(grad);
+                TextB.Text += MathSyst.Cos(grad) / MathSyst.SQRTkv(1 - MathSyst.Power(MathSyst.Cos(grad), 2));
+                TextB.Text += MathSyst.SQRTkv(1 - MathSyst.Power(MathSyst.Cos(grad), 2)) / MathSyst.Cos(grad);
             }
             else if (sender == Ostatok)
             {
@@ -139,18 +145,18 @@ namespace я_и_толя
             {
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
-                TextB.Text += SQRTkv(znachenie);
+                TextB.Text += MathSyst.SQRTkv(znachenie);
             }
             else if (sender == Facktorial)
             {
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
-                TextB.Text += Fack(znachenie);
+                TextB.Text += MathSyst.Fack(znachenie);
             }
             else if (sender == back)
             {
                 TextB.Clear();
-                TextB.Text += Clear(text);
+                TextB.Text += MathSyst.Clear(text);
             }
             else if (sender == Delenie)
             {
@@ -179,21 +185,106 @@ namespace я_и_толя
             }
             else if (sender == multiply)
             {
-
+                if (kol == 0)
+                {
+                    D = "*";
+                    TextB.Clear();
+                    N1 = text;
+                    kol++;
+                }
+                else if (kol == 1)
+                {
+                    D2 = "*";
+                    N3 = text;
+                    if (D == D2)
+                    {
+                        kol++;
+                        znachenie = double.Parse(N1) * double.Parse(text);
+                        TextB.Clear();
+                        TextB.Text += znachenie;
+                        N1 = TextB.Text;
+                    }
+                }
             }
             else if (sender == minus)
             {
+                if (kol == 0)
+                {
+                    D = "-";
+                    TextB.Clear();
+                    N1 = text;
+                    kol++;
+                }
+                else if (kol == 1)
+                {
+                    D2 = "-";
+                    N3 = text;
+                    if (D == D2)
+                    {
+                        kol++;
+                        znachenie = double.Parse(N1) - double.Parse(text);
+                        TextB.Clear();
+                        TextB.Text += znachenie;
+                        N1 = TextB.Text;
+                    step = Convert.ToDouble(TextB.Text);
 
+                    }
+
+                }
             }
             else if (sender == addition)
             {
+                if (kol==0)
+                {
+                D = "+";
+                TextB.Clear();
+                N1 = text;
+                    kol++;
+                }
+                else if(kol==1)
+                {
+                    D2 = "+";
+                    if (D==D2)
+                    {
+                        kol++;
+                        znachenie = double.Parse(N1)+double.Parse(text);
+                    TextB.Clear();
+                        TextB.Text += znachenie;
+                        N1 = TextB.Text;
+                    }
+                    else
+                    {
+                        N3 = text;
+                        kol += 2;
+
+                    }
+                }
 
             }
             else if (sender == division)
             {
-
+                if (kol == 0)
+                {
+                    D = "/";
+                    TextB.Clear();
+                    N1 = text;
+                    kol++;
+                }
+                else if (kol == 1)
+                {
+                    D2 = "/";
+                    N3 = text;
+                    if (D == D2)
+                    {
+                        kol++;
+                        znachenie = double.Parse(N1) / double.Parse(text);
+                        TextB.Clear();
+                        TextB.Text += znachenie;
+                        N1 = TextB.Text;
+                    }
+                }
             }
-            else if (sender==ln)
+            else if (sender == ln)
             {
                 znachenie = double.Parse(TextB.Text);
                 TextB.Clear();
@@ -201,99 +292,45 @@ namespace я_и_толя
             }
             else if (sender == equally)
             {
+                double dn1, dn2, res = 0;
+                dn1 = double.Parse(N1);
+                dn2 = double.Parse(TextB.Text);
                 TextB.Clear();
-                TextB.Text += otvet;
+                if (D == "-")
+                    res = dn1 - dn2;
+                else if (D == "*")
+                    res = dn1 * dn2;
+                else if (D == "/")
+                    res = dn1 / dn2;
+                else if (D == "+")
+                    res = dn1 + dn2;
+                TextB.Text += res;
             }
             else if (sender != comma)
-                TextB.Text += stroka;
+            { TextB.Text += stroka; }
 
         }
-        //расчёт SQRT
-        static public double SQRTkv(double number)
+        static public double Lognat(double x, int n = 1, double znat = 1e-5)
         {
-            // number - число под корнем         
-            double t;
-            double result = number / 2;
-            do
-            {
-                t = result;
-                result = (t + (number / t)) / 2;
-            } while ((t - result) != 0);
-            return result;
-        }
-        // расчёт факториала
-        static public double Fack(double x)
-        {
-            double sum = 1;
-            for (int i = 1; i <= x; i++)
-                sum *= i;
-            return sum;
-        }
-        //степень
-        static double Power(double x, double n)
-        {
-            if (n == 0)
-                return 1;
-            if (n % 2 == 0)
-            {
-                var p = Power(x, n / 2);
-                return p * p;
-            }
-            else
-                return x * Power(x, n - 1);
-        }
-        //Очистка
-        static string Clear(string value)
-        {
-            int lenght = value.Length - 1;
-            string text = value;
-            value = "";
-            for (int i = 0; i < lenght; i++)
-                value += text[i];
-            return value;
-        }
-        //COS
-        public static double Cos(double x, int n = 0, double precision = 1e-5)
-        {
-            var t = Power(-1, n) * Power(x, 2 * n) / Fack((uint)(2 * n));
-            if (Abs(t) < precision)
+            var t = MathSyst.Power(-1, n + 1) * MathSyst.Power(x - 1, n) / n;
+            if (MathSyst.Abs(t) < znat)
                 return t;
-            return t + Cos(x, n + 1, precision);
-        }
-        //Модуль
-        static double Abs(double num)
-        {
-            if (num >= 0)
-                return num;
-            return -num;
-        }
-        static double Factorial(uint num)
-        {
-            if (num <= 1)
-                return 1d;
-            return num * Factorial(num - 1);
-        }
-        static double Lognat(double x, int n =1, double znat = 1e-5)
-        {
-            var t = Power(-1, n+1) * Power(x -1, n) / n;
-            if (Abs(t)<znat)
-                return t;
-            return t +Lognat(x,n+1,znat);
+            return t + Lognat(x, n + 1, znat);
         }
         //округление
-       /* static string Round(string x)
-        {
-            int legthn = x.Length;
-            double y = double.Parse(x);
-            double okr = y % 10;
-            double r = Clear(y);
-            if (okr>=5)
-            {
+        /* static string Round(string x)
+         {
+             int legthn = x.Length;
+             double y = double.Parse(x);
+             double okr = y % 10;
+             double r = Clear(y);
+             if (okr>=5)
+             {
 
-            }
-            return x;
-        }
-       */
+             }
+             return x;
+         }
+        */
 
     }
 }
