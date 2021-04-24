@@ -28,7 +28,8 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="PgTwo_Text" Grid.ColumnSpan="4" Background="#ffff" FontSize="16" FontFamily="Times New Roman" Padding="10 20 0 0" Margin="29,0.2,9.8,12.6" Grid.Column="3" Grid.Row="1" />
+        <TextBlock x:Name="PgTwo_Text" Grid.ColumnSpan="4" Background="#ffff" FontSize="16" FontFamily="Times New Roman" Padding="10 20 0 0" Margin="60,0.2,10.8,12.6" Grid.Column="3" Grid.Row="1" />
+        <TextBlock Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" Foreground="White" HorizontalAlignment="Center" FontSize="18" VerticalAlignment="Bottom" Margin="60,0,20.2,14.8">Результат:</TextBlock>
         <Button x:Name="But1" Grid.Column="5" Background="Orange" Click="But1_Click" Content="Назад" Margin="39.8,20,9.8,14.8" Grid.ColumnSpan="2" FontSize="15" FontWeight="Bold" Height="30"/>
         <!--Метод трапеций-->
         <GroupBox Grid.ColumnSpan="6" Grid.Column="1" Header="Метод трапеций" Foreground="White" HorizontalAlignment="Left" Height="128" Grid.Row="2" Grid.RowSpan="3" VerticalAlignment="Top" Width="476" Opacity="0.8" FontSize="16" FontWeight="Bold" />
