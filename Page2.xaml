@@ -83,15 +83,29 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Grid.ColumnSpan="2" VerticalAlignment="Top" Margin="0.4,0.2,0,0" HorizontalAlignment="Left" Width="162" Height="52" Cursor="Hand" Click="To_function_Click" Grid.Column="1" Grid.Row="1" >
-            <Button.Template>
-                <ControlTemplate>
-                    <Grid>
-                        <Border Background="#FFFFD296"></Border>
-                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Medium">Выбрать функцию ⋮</Label>
-                    </Grid>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="0 25 0 0 " Foreground="White" FontSize="18" FontWeight="Medium">Выберите функцию</TextBlock>
+        <!--Функции-->
+        <ComboBox Grid.Column="1" Grid.ColumnSpan="3" Margin="15.4,55,76,9.6" SelectionChanged="ComboBox_SelectionChanged" Grid.RowSpan="2">
+            <ComboBoxItem Name="f1" IsSelected="True">
+                <Image  Source="C:\Users\User\Source\Repos\Calculator\Images\f1.png"  Width="95"  Height="53"/>
+            </ComboBoxItem>
+
+            <ComboBoxItem Name="f2">
+                <Image Source="C:\Users\User\Source\Repos\Calculator\Images\f2.png"></Image>
+            </ComboBoxItem>
+
+            <ComboBoxItem Name="f3">
+                <Image Source="C:\Users\User\Source\Repos\Calculator\Images\f3.png" Width="82"></Image>
+            </ComboBoxItem>
+
+            <ComboBoxItem Name="f4">
+                <Image Source="C:\Users\User\Source\Repos\Calculator\Images\f4.png" Height="55" Width="115"></Image>
+            </ComboBoxItem>
+
+            <ComboBoxItem Name="f5">
+                <Image Source="C:\Users\User\Source\Repos\Calculator\Images\f5.png" Height="54" Width="114"></Image>
+            </ComboBoxItem>
+        </ComboBox>
     </Grid>
 </Page>

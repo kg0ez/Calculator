@@ -39,9 +39,9 @@ namespace я_и_толя
             InitializeComponent();
             foreach (UIElement el in MainRoot.Children)
             {
-                if (el is Button)
+                if (el is System.Windows.Controls.Button)
                 {
-                    ((Button)el).Click += Button_Click;
+                    ((System.Windows.Controls.Button)el).Click += Button_Click;
 
                 }
             }
@@ -51,7 +51,7 @@ namespace я_и_толя
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string stroka = (string)((Button)e.OriginalSource).Content;
+            string stroka = (string)((System.Windows.Controls.Button)e.OriginalSource).Content;
             if (sender == comma && onecomma == 0)
             { onecomma++;
                 TextB.Text += stroka;

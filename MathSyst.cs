@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace я_и_толя
 {
@@ -76,5 +79,17 @@ namespace я_и_толя
             return t + Sin(x, n + 1, precision);
         }
 
+
+        public static int i;
+        public static double Func(double x) 
+        {
+            switch (i)
+            {
+                case 1 : return 1 / Power(x, 2);
+
+                default: return 0;
+            }
+        } 
+        
     }
 }
