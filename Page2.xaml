@@ -88,23 +88,23 @@
         <!--Функции-->
         <ComboBox Grid.Column="1" Grid.ColumnSpan="3" Margin="15.4,55,76,9.6" SelectionChanged="ComboBox_SelectionChanged" Grid.RowSpan="2">
             <ComboBoxItem Name="f1" IsSelected="True">
-                <Image  Source="C:\Users\User\Source\Repos\Calculator\Images\f1.png"  Width="95"  Height="53"/>
+                <Image  Source="Images\f1.png"  Width="95"  Height="53"/>
             </ComboBoxItem>
 
             <ComboBoxItem Name="f2">
-                <Image Source="C:\Users\User\Source\Repos\Calculator\Images\f2.png"></Image>
+                <Image Source="Images\f2.png"></Image>
             </ComboBoxItem>
 
             <ComboBoxItem Name="f3">
-                <Image Source="C:\Users\User\Source\Repos\Calculator\Images\f3.png" Width="82"></Image>
+                <Image Source="Images\f3.png" Width="82"></Image>
             </ComboBoxItem>
 
             <ComboBoxItem Name="f4">
-                <Image Source="C:\Users\User\Source\Repos\Calculator\Images\f4.png" Height="55" Width="115"></Image>
+                <Image Source="Images\f4.png" Height="55" Width="115"></Image>
             </ComboBoxItem>
 
             <ComboBoxItem Name="f5">
-                <Image Source="C:\Users\User\Source\Repos\Calculator\Images\f5.png" Height="54" Width="114"></Image>
+                <Image Source="Images\f5.png" Height="54" Width="114"></Image>
             </ComboBoxItem>
         </ComboBox>
     </Grid>
