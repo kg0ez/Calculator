@@ -65,6 +65,10 @@ namespace я_и_толя
             {
                 PgTwo_Text.Text = Convert.ToString(TrapecMethod(Convert.ToDouble(Trapec_a.Text), Convert.ToDouble(Trapec_B.Text), Convert.ToInt32(Trapec_N.Text)));
             }
+            else
+            {
+                MessageBox.Show("Вы не выбрати метод трапеций");
+            }
         }
         private void Button_Simpson(object sender, RoutedEventArgs e)
         {
@@ -72,7 +76,11 @@ namespace я_и_толя
             {
                 PgTwo_Text.Text = Convert.ToString(SimpsonMethod(Convert.ToDouble(Simp_a.Text), Convert.ToDouble(Simp_b.Text), Convert.ToInt32(Simp_n.Text)));
             }
-            
+            else
+            {
+                MessageBox.Show("Вы не выбрати метод симпсона");
+            }
+
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

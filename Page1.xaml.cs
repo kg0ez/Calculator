@@ -362,10 +362,11 @@ namespace я_и_толя
         
         static public double Lognat(double x, int n = 1, double znat = 1e-5)
         {
-            var t = MathSyst.Power(-1, n + 1) * MathSyst.Power(x - 1, n) / n;
-            if (MathSyst.Abs(t) < znat)
+            double t = MathSyst.Power(-1, n + 1) * MathSyst.Power(x - 1, n) / n;
+            long b = (long)t;
+            if (MathSyst.Abs(b) < znat)
                 return t;
-            return t + Lognat(x, n + 1, znat);
+            return b + Lognat(x, n + 1, znat);
         }
         //округление
         /* static string Round(string x)
