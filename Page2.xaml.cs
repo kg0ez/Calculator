@@ -77,9 +77,25 @@ namespace я_и_толя
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (sender == f1)
+            if (f1.IsSelected == true)
             {
                 MathSyst.i = 1;
+            }
+            else if(f2.IsSelected == true)
+            {
+                MathSyst.i = 2;
+            }
+            else if(f3.IsSelected == true)
+            {
+                MathSyst.i = 3;
+            }
+            else if (f4.IsSelected == true)
+            {
+                MathSyst.i = 4;
+            }
+            else if (f5.IsSelected == true)
+            {
+                MathSyst.i = 5;
             }
         }
     }

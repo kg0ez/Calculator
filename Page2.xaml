@@ -28,7 +28,8 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="PgTwo_Text" Grid.ColumnSpan="4" Background="#ffff" FontSize="16" FontFamily="Times New Roman" Padding="10 20 0 0" Margin="29,0.2,9.8,12.6" Grid.Column="3" Grid.Row="1" />
+        <TextBlock x:Name="PgTwo_Text" Grid.ColumnSpan="4" Background="#ffff" FontSize="16" FontFamily="Times New Roman" Padding="10 20 0 0" Margin="60,0.2,10.8,12.6" Grid.Column="3" Grid.Row="1" />
+        <TextBlock Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" Foreground="White" HorizontalAlignment="Center" FontSize="18" VerticalAlignment="Bottom" Margin="60,0,20.2,14.8">Результат:</TextBlock>
         <Button x:Name="But1" Grid.Column="5" Background="Orange" Click="But1_Click" Content="Назад" Margin="39.8,20,9.8,14.8" Grid.ColumnSpan="2" FontSize="15" FontWeight="Bold" Height="30"/>
         <!--Метод трапеций-->
         <GroupBox Grid.ColumnSpan="6" Grid.Column="1" Header="Метод трапеций" Foreground="White" HorizontalAlignment="Left" Height="128" Grid.Row="2" Grid.RowSpan="3" VerticalAlignment="Top" Width="476" Opacity="0.8" FontSize="16" FontWeight="Bold" />
@@ -88,23 +89,23 @@
         <!--Функции-->
         <ComboBox Grid.Column="1" Grid.ColumnSpan="3" Margin="15.4,55,76,9.6" SelectionChanged="ComboBox_SelectionChanged" Grid.RowSpan="2">
             <ComboBoxItem Name="f1" IsSelected="True">
-                <Image  Source="C:\Users\User\Source\Repos\Calculator\Images\f1.png"  Width="95"  Height="53"/>
+                <Image  Source="Images\f1.png"  Width="95"  Height="53"/>
             </ComboBoxItem>
 
             <ComboBoxItem Name="f2">
-                <Image Source="C:\Users\User\Source\Repos\Calculator\Images\f2.png"></Image>
+                <Image Source="Images\f2.png"></Image>
             </ComboBoxItem>
 
             <ComboBoxItem Name="f3">
-                <Image Source="C:\Users\User\Source\Repos\Calculator\Images\f3.png" Width="82"></Image>
+                <Image Source="Images\f3.png" Width="82"></Image>
             </ComboBoxItem>
 
             <ComboBoxItem Name="f4">
-                <Image Source="C:\Users\User\Source\Repos\Calculator\Images\f4.png" Height="55" Width="115"></Image>
+                <Image Source="Images\f4.png" Height="55" Width="115"></Image>
             </ComboBoxItem>
 
             <ComboBoxItem Name="f5">
-                <Image Source="C:\Users\User\Source\Repos\Calculator\Images\f5.png" Height="54" Width="114"></Image>
+                <Image Source="Images\f5.png" Height="54" Width="114"></Image>
             </ComboBoxItem>
         </ComboBox>
     </Grid>
