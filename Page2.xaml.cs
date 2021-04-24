@@ -24,27 +24,22 @@ namespace я_и_толя
         {
             InitializeComponent();
         }
-        private void To_function_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Function());
-        }
+
+       
         private void But1_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Page1());
         }
-        static double Func(double x)
-        {
-            return 1 / Math.Log(x);
-        }
+        
 
         //Расчёт методом трапеций
         public static double TrapecMethod(double a, double b, int n)
         {
             double h = (b - a) / n;
-            double sum = Func(a) + Func(b);
+            double sum = MathSyst.Func(a) + MathSyst.Func(b);
             for (int i = 0; i <= n - 1; i++)
             {
-                sum += 2 * Func(a + i * h);
+                sum += 2 * MathSyst.Func(a + i * h);
             }
             sum *= h / 2;
             return sum;
@@ -53,16 +48,16 @@ namespace я_и_толя
         public static double SimpsonMethod(double a, double b, int n)
         {
             double h = (b - a) / n;
-            double sum = Func(a)+Func(b);
+            double sum = MathSyst.Func(a)+MathSyst.Func(b);
             int k;
             for (int i = 0; i <= n - 1; i++)
             {
                 k = 2 + 2 * (i % 2);
-                sum += k * Func(a + i * h);
+                sum += k * MathSyst.Func(a + i * h);
             }
             sum *= h / 3;
             return sum;
-
+        
         }
         private void Button_Trapec(object sender, RoutedEventArgs e)
         {
@@ -77,7 +72,15 @@ namespace я_и_толя
             {
                 PgTwo_Text.Text = Convert.ToString(SimpsonMethod(Convert.ToDouble(Simp_a.Text), Convert.ToDouble(Simp_b.Text), Convert.ToInt32(Simp_n.Text)));
             }
+            
         }
 
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender == f1)
+            {
+                MathSyst.i = 1;
+            }
+        }
     }
 }
