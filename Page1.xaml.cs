@@ -58,16 +58,21 @@ namespace я_и_толя
             }
             else if (TextB.Text == "0")
                 TextB.Text = "";
+            string text = TextB.Text, obrabotka=TextB.Text;
             if (kol==2)
             {
                 TextB.Clear();
                 kol = 1;
             }
-            string text = TextB.Text, obrabotka=TextB.Text;
+            if (kol==3)
+            {
+                TextB.Clear();
+            }
             if (stroka == "C")
             {
                 TextB.Text = "0";
                 onecomma = 0;
+                kol = 0;
             }
             else if (sender == pi)
             {
@@ -125,15 +130,14 @@ namespace я_и_толя
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
                 var grad = znachenie * 3.1415926535897931 / 180;
-                TextB.Text += MathSyst.SQRTkv(1 - MathSyst.Power(MathSyst.Cos(grad), 2));
+                TextB.Text += MathSyst.Sin(grad);
             }
             else if (sender == tg)
             {
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
                 var grad = znachenie * 3.1415926535897931 / 180;
-                TextB.Text += MathSyst.Cos(grad) / MathSyst.SQRTkv(1 - MathSyst.Power(MathSyst.Cos(grad), 2));
-                TextB.Text += MathSyst.SQRTkv(1 - MathSyst.Power(MathSyst.Cos(grad), 2)) / MathSyst.Cos(grad);
+                TextB.Text += MathSyst.Sin(grad) / MathSyst.Cos(grad);
             }
             else if (sender == Ostatok)
             {
@@ -183,55 +187,6 @@ namespace я_и_толя
                     Min_Plus++;
                 }
             }
-            else if (sender == multiply)
-            {
-                if (kol == 0)
-                {
-                    D = "*";
-                    TextB.Clear();
-                    N1 = text;
-                    kol++;
-                }
-                else if (kol == 1)
-                {
-                    D2 = "*";
-                    N3 = text;
-                    if (D == D2)
-                    {
-                        kol++;
-                        znachenie = double.Parse(N1) * double.Parse(text);
-                        TextB.Clear();
-                        TextB.Text += znachenie;
-                        N1 = TextB.Text;
-                    }
-                }
-            }
-            else if (sender == minus)
-            {
-                if (kol == 0)
-                {
-                    D = "-";
-                    TextB.Clear();
-                    N1 = text;
-                    kol++;
-                }
-                else if (kol == 1)
-                {
-                    D2 = "-";
-                    N3 = text;
-                    if (D == D2)
-                    {
-                        kol++;
-                        znachenie = double.Parse(N1) - double.Parse(text);
-                        TextB.Clear();
-                        TextB.Text += znachenie;
-                        N1 = TextB.Text;
-                    step = Convert.ToDouble(TextB.Text);
-
-                    }
-
-                }
-            }
             else if (sender == addition)
             {
                 if (kol==0)
@@ -252,14 +207,82 @@ namespace я_и_толя
                         TextB.Text += znachenie;
                         N1 = TextB.Text;
                     }
-                    else
+                    else if (D!=D2 && D2=="+")
                     {
-                        N3 = text;
-                        kol += 2;
-
+                        kol+=2;
+                        if (D=="*")
+                        znachenie = double.Parse(N1) * double.Parse(text);
+                        else if(D=="/")
+                        znachenie = double.Parse(N1) / double.Parse(text);
+                        TextB.Clear();
+                        TextB.Text += znachenie;
+                        N1 = TextB.Text;
                     }
                 }
 
+            }
+            else if (sender == minus)
+            {
+                if (kol == 0)
+                {
+                    D = "-";
+                    TextB.Clear();
+                    N1 = text;
+                    kol++;
+                }
+                else if (kol == 1)
+                {
+                    D2 = "-";
+                    if (D == D2)
+                    {
+                        kol++;
+                        znachenie = double.Parse(N1) - double.Parse(text);
+                        TextB.Clear();
+                        TextB.Text += znachenie;
+                        N1 = TextB.Text;
+                    step = Convert.ToDouble(TextB.Text);
+
+                    }
+                    else if (D != D2 && D2 == "-")
+                    {
+                        kol += 2;
+                        if (D == "*")
+                            znachenie = double.Parse(N1) * double.Parse(text);
+                        else if (D == "/")
+                            znachenie = double.Parse(N1) / double.Parse(text);
+                        TextB.Clear();
+                        TextB.Text += znachenie;
+                        N1 = TextB.Text;
+                    }
+
+                }
+            }
+            else if (sender == multiply)
+            {
+                if (kol == 0)
+                {
+                    D = "*";
+                    TextB.Clear();
+                    N1 = text;
+                    kol++;
+                }
+                else if (kol == 1)
+                {
+                    D2 = "*";
+                    if (D == D2)
+                    {
+                        kol++;
+                          znachenie = double.Parse(N1) * double.Parse(text);
+                        TextB.Clear();
+                        TextB.Text += znachenie;
+                        N1 = TextB.Text;
+                    }
+                    else if (D != D2)
+                    {
+                        kol += 2;
+                        N3 = text;
+                    }
+                }
             }
             else if (sender == division)
             {
@@ -273,7 +296,6 @@ namespace я_и_толя
                 else if (kol == 1)
                 {
                     D2 = "/";
-                    N3 = text;
                     if (D == D2)
                     {
                         kol++;
@@ -282,7 +304,14 @@ namespace я_и_толя
                         TextB.Text += znachenie;
                         N1 = TextB.Text;
                     }
+                    
+                    else if (D!=D2)
+                    {
+                        kol += 2;
+                        N3 = text;
+                    }
                 }
+               
             }
             else if (sender == ln)
             {
@@ -294,6 +323,25 @@ namespace я_и_толя
             {
                 double dn1, dn2, res = 0;
                 dn1 = double.Parse(N1);
+                if (kol == 3 && D2=="/")
+                {
+                    kol = 0;
+                    znachenie = double.Parse(N3) / double.Parse(text);
+                    TextB.Clear();
+                    TextB.Text += znachenie;
+                }
+                else if (kol == 3 && D2 == "*")
+                {
+                    kol = 0;
+                    znachenie = double.Parse(N3) * double.Parse(text);
+                    TextB.Clear();
+                    TextB.Text += znachenie;
+                }
+                if (TextB.Text=="")
+                {
+                    TextB.Text = text;
+                    D = D2;
+                }
                 dn2 = double.Parse(TextB.Text);
                 TextB.Clear();
                 if (D == "-")
@@ -305,11 +353,13 @@ namespace я_и_толя
                 else if (D == "+")
                     res = dn1 + dn2;
                 TextB.Text += res;
+                kol = 0;
             }
             else if (sender != comma)
             { TextB.Text += stroka; }
 
         }
+        
         static public double Lognat(double x, int n = 1, double znat = 1e-5)
         {
             var t = MathSyst.Power(-1, n + 1) * MathSyst.Power(x - 1, n) / n;

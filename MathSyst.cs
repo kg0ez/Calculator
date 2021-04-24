@@ -67,6 +67,14 @@ namespace я_и_толя
                 return t;
             return t + Cos(x, n + 1, precision);
         }
-       
+        //SIN
+        public static double Sin(double x, int n = 1, double precision = 1e-5)
+        {
+            var t = MathSyst.Power(-1, n - 1) * MathSyst.Power(x, 2 * n - 1) / MathSyst.Fack((uint)(2 * n - 1));
+            if (MathSyst.Abs(t) < precision)
+                return t;
+            return t + Sin(x, n + 1, precision);
+        }
+
     }
 }
