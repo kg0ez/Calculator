@@ -104,6 +104,7 @@ namespace я_и_толя
                 }
                 else if (stroka == "=")
                 {
+                    step = Convert.ToInt32(TextB.Text);
                     TextB.Clear();
                     if (step < 0)
                     {
@@ -223,6 +224,7 @@ namespace я_и_толя
             }
             else if (sender == minus)
             {
+
                 if (kol == 0)
                 {
                     D = "-";
@@ -343,16 +345,19 @@ namespace я_и_толя
                     D = D2;
                 }
                 dn2 = double.Parse(TextB.Text);
-                TextB.Clear();
-                if (D == "-")
-                    res = dn1 - dn2;
-                else if (D == "*")
-                    res = dn1 * dn2;
-                else if (D == "/")
-                    res = dn1 / dn2;
-                else if (D == "+")
-                    res = dn1 + dn2;
-                TextB.Text += res;
+                if (D == "-" || D == "*"|| D == "+" || D == "/")
+                {
+                    TextB.Clear();
+                    if (D == "-")
+                        res = dn1 - dn2;
+                    else if (D == "*")
+                        res = dn1 * dn2;
+                    else if (D == "/")
+                        res = dn1 / dn2;
+                    else if (D == "+")
+                        res = dn1 + dn2;
+                    TextB.Text += res;
+                }
                 kol = 0;
             }
             else if (sender != comma)
@@ -363,7 +368,7 @@ namespace я_и_толя
         static public double Lognat(double x, int n = 1, double znat = 1e-5)
         {
             var t = MathSyst.Power(-1, n + 1) * MathSyst.Power(x - 1, n) / n;
-            if (MathSyst.Abs(t) < znat)
+            if (MathSyst.Abs(t) < 1e-3)
                 return t;
             return t + Lognat(x, n + 1, znat);
         }
