@@ -67,7 +67,7 @@ namespace я_и_толя
             }
             else
             {
-                MessageBox.Show("Вы не выбрати метод трапеций");
+                MessageBox.Show("Вы не выбрали метод Трапеций");
             }
         }
         private void Button_Simpson(object sender, RoutedEventArgs e)
@@ -78,7 +78,7 @@ namespace я_и_толя
             }
             else
             {
-                MessageBox.Show("Вы не выбрати метод симпсона");
+                MessageBox.Show("Вы не выбрали метод Симпсона");
             }
 
         }
