@@ -33,6 +33,18 @@ namespace я_и_толя
         public double sqrt234;
         public double step, otvet=0;
         public int quantity = 0, onecomma = 0, Min_Plus = 0,kol=0;
+
+        public int DS_Count(string s)
+        {
+            string substr = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0].ToString();
+            int count = (s.Length - s.Replace(substr, "").Length) / substr.Length;
+            return count;
+        }
+        private void TextB_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !((Char.IsDigit(e.Text, 0) || ((e.Text == System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0].ToString()) && (DS_Count(((TextBox)sender).Text) < 1))));
+        }
+        
         public string D,D2, N1,N3;
         public Page1()
         {
@@ -47,7 +59,6 @@ namespace я_и_толя
             }
             TextB.Text = "0";
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -368,12 +379,9 @@ namespace я_и_толя
         static public double Lognat(double x, int n = 1, double znat = 1e-5)
         {
             double t = MathSyst.Power(-1, n + 1) * MathSyst.Power(x - 1, n) / n;
-            long b = (long)t;
-            if (MathSyst.Abs(b) < znat)
-            var t = MathSyst.Power(-1, n + 1) * MathSyst.Power(x - 1, n) / n;
             if (MathSyst.Abs(t) < 1e-3)
                 return t;
-            return b + Lognat(x, n + 1, znat);
+            return t + Lognat(x, n + 1, znat);
         }
         //округление
         /* static string Round(string x)
