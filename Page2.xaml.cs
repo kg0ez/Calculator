@@ -53,7 +53,7 @@ namespace я_и_толя
         //Вывод справки
         private void GetHelp_Click(object sender, RoutedEventArgs e)
         {
-            new Support_integrals().Show();
+            new Support_integrals().ShowDialog();
         }
 
         //Расчёт методом трапеций
