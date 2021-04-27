@@ -144,6 +144,18 @@ namespace я_и_толя
             {
                 MathSyst.i = 5;
             }
+            else if (f6.IsSelected == true)
+            {
+                MathSyst.i = 6;
+            }
+            else if (f7.IsSelected == true)
+            {
+                MathSyst.i = 7;
+            }
+            else if (f8.IsSelected == true)
+            {
+                MathSyst.i = 8;
+            }
         }
     }
 }

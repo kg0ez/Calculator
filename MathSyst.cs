@@ -88,8 +88,11 @@ namespace я_и_толя
                 case 1 : return 1 / Power(x, 2);
                 case 2 : return Cos(x);
                 case 3: return Sin(x);
-                case 4: return 1/Math.Pow(Cos(x),2);
+                case 4: return 1/Power(Cos(x),2);
                 case 5: return 1/Power(Sin(x),2);
+                case 6: return 1 / x;
+                case 7: return Power(Math.E,x);
+                case 8: return 1 /x*Math.Log(x);
                 default: return 1 / Power(x, 2);
             }
         } 
