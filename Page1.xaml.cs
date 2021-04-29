@@ -31,10 +31,7 @@ namespace я_и_толя
         }
         public double znachenie,value, step;
         public int quantity = 0, onecomma = 0,kol=0,g=0, sqrtchisl=0;
-        public double znachenie;
         public double sqrt234;
-        public double step, otvet=0;
-        public int quantity = 0, onecomma = 0, Min_Plus = 0,kol=0;
 
         //Ограничение ввода символов
         public int DS_Count(string s)
