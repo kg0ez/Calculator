@@ -78,8 +78,12 @@ namespace я_и_толя
                 return t;
             return t + Sin(x, n + 1, precision);
         }
-
-
+        //MINUSorPLUS
+        static public double MorP(double znachenie)
+        {
+            znachenie = -1 * (znachenie);
+            return znachenie;
+        }
         public static int i;
         public static double Func(double x) 
         {
@@ -92,7 +96,19 @@ namespace я_и_толя
                 case 5: return 1/Power(Sin(x),2);
                 default: return 1 / Power(x, 2);
             }
-        } 
-        
+        }
+        //Корень из N
+        public static double SqrtN(double n, double A, double eps = 0.0001)
+        {
+            var x0 = A / n;
+            var x1 = (1 / n) * ((n - 1) * x0 + A / Power(x0, (int)n - 1));
+            while (Math.Abs(x1 - x0) > eps)
+            {
+                x0 = x1;
+                x1 = (1 / n) * ((n - 1) * x0 + A / Power(x0, (int)n - 1));
+            }
+            return x1;
+        }
+
     }
 }

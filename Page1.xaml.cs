@@ -29,11 +29,11 @@ namespace я_и_толя
             NavigationService.Navigate(new Page2());
 
         }
-        public double znachenie;
-        public double sqrt234;
-        public double step, otvet=0;
-        public int quantity = 0, onecomma = 0, Min_Plus = 0,kol=0;
+        public double znachenie,value, step;
+        public int quantity = 0, onecomma = 0,kol=0,g=0, sqrtchisl=0;
         public string D,D2, N1,N3;
+        public bool entrance = false, slog = false;
+        public double PI = 3.141592653589793, E= 2.718281828459045;
         public Page1()
         {
             InitializeComponent();
@@ -52,43 +52,55 @@ namespace я_и_толя
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string stroka = (string)((System.Windows.Controls.Button)e.OriginalSource).Content;
-            if (sender == comma && onecomma == 0)
-            { onecomma++;
+            if (sender == comma && onecomma == 0) //Работа с нулями
+            { 
+                onecomma++;
                 TextB.Text += stroka;
             }
             else if (TextB.Text == "0")
                 TextB.Text = "";
-            string text = TextB.Text, obrabotka=TextB.Text;
-            if (kol==2)
+            string text = TextB.Text;
+            if (slog == true)
+            {
+                TextB.Clear();
+                D2 = D;
+            }
+            if (kol == 2)//Выполнение арифметических операций, если одинаковое действия
             {
                 TextB.Clear();
                 kol = 1;
             }
-            if (kol==3)
-            {
+            if (kol == 3)//Выполнение арифметических операций, если разные действия
                 TextB.Clear();
-            }
-            if (stroka == "C")
+            if (stroka == "C") //Очистка значения 
             {
                 TextB.Text = "0";
-                onecomma = 0;
-                kol = 0;
+                quantity = 0; onecomma = 0;  kol = 0;  g = 0; sqrtchisl = 0;
+                znachenie = 0; value = 0; step=0;
+                entrance = false; slog = false;
+                D = ""; D2 = ""; N1 = ""; N3="";
             }
-            else if (sender == pi)
+            else if (sender == pi) //Число PI
             {
                 TextB.Clear();
-                TextB.Text += "3,141592653589793";
+                TextB.Text += PI;
             }
-            else if (sender == button_e)
+            else if (sender == button_e) //Число E
             {
                 TextB.Clear();
-                TextB.Text += "2,718281828459045";
+                TextB.Text += E;
             }
-            else if (sender == POWN || quantity == 1)
+            else if (sender == POWN || quantity == 1) //Возведение в степень
             {
                 if (quantity == 1)
                 {
-                    if (sender == back)
+                    if (sender == MINUSorPLUS) //Постановка "+" или "-" перед числом
+                    {
+                        value = double.Parse(TextB.Text);
+                        TextB.Clear();
+                        TextB.Text += MathSyst.MorP(value);
+                    }
+                    else if (sender == back)
                     {
                         TextB.Clear();
                         TextB.Text += MathSyst.Clear(text);
@@ -108,7 +120,7 @@ namespace я_и_толя
                     TextB.Clear();
                     if (step < 0)
                     {
-                        step = step - 2 * step;
+                        step = -1*step;
                         double ex = 1.0 / MathSyst.Power(znachenie, step);
                         TextB.Text += ex;
                     }
@@ -118,77 +130,107 @@ namespace я_и_толя
                 }
 
             }
-            else if (sender == cos)
+            
+            else if (sender == cos) //COS
             {
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
-                var grad = znachenie * 3.1415926535897931 / 180;
+                var grad = znachenie * PI / 180;
                 TextB.Text += MathSyst.Cos(grad);
 
             }
-            else if (sender == sin)
+            else if (sender == sin) //SIN
             {
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
-                var grad = znachenie * 3.1415926535897931 / 180;
+                var grad = znachenie * PI / 180;
                 TextB.Text += MathSyst.Sin(grad);
             }
-            else if (sender == tg)
+            else if (sender == tg) //tg
             {
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
-                var grad = znachenie * 3.1415926535897931 / 180;
+                var grad = znachenie * PI / 180;
                 TextB.Text += MathSyst.Sin(grad) / MathSyst.Cos(grad);
             }
-            else if (sender == Ostatok)
+            else if (sender == Ostatok) //Деление на 100
             {
                 znachenie = Convert.ToDouble(TextB.Text) / 100;
                 TextB.Clear();
                 TextB.Text += znachenie;
             }
-            else if (sender == SQRT2)
+            else if (sender == SQRT2) //Квадратный корень
             {
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
                 TextB.Text += MathSyst.SQRTkv(znachenie);
             }
-            else if (sender == Facktorial)
+            else if (sender == SQRT3) //Корень в третьей степени
+            {
+                znachenie = Convert.ToDouble(TextB.Text);
+                TextB.Clear();
+                TextB.Text += MathSyst.SqrtN(3, znachenie);
+            }
+            else if (sender == SQRT4) //Корень в четвёртой степени
+            {
+                znachenie = Convert.ToDouble(TextB.Text);
+                TextB.Clear();
+                TextB.Text += MathSyst.SQRTkv(znachenie);
+                znachenie = Convert.ToDouble(TextB.Text);
+                TextB.Clear();
+                TextB.Text += MathSyst.SQRTkv(znachenie);
+            }
+            else if (sender == SQRTN || sqrtchisl == 1) //Корень из N
+            {
+                if (sqrtchisl == 1)
+                {
+
+                    if (sender == back)
+                    {
+                        TextB.Clear();
+                        TextB.Text += MathSyst.Clear(text);
+                    }
+                    else if (stroka != "=")
+                        TextB.Text += stroka;
+                }
+                if (sqrtchisl == 0)
+                {
+                    znachenie = Convert.ToDouble(TextB.Text);
+                    TextB.Clear();
+                    sqrtchisl++;
+                }
+                else if (stroka == "=")
+                {
+                    step = Convert.ToInt32(TextB.Text);
+                    TextB.Clear();
+                    TextB.Text += MathSyst.SqrtN(step, znachenie);
+                    sqrtchisl = 0;
+                }
+            }
+            else if (sender == Facktorial) //Факториал
             {
                 znachenie = Convert.ToDouble(TextB.Text);
                 TextB.Clear();
                 TextB.Text += MathSyst.Fack(znachenie);
             }
-            else if (sender == back)
+            else if (sender == back) //Очистить последний ввод
             {
                 TextB.Clear();
                 TextB.Text += MathSyst.Clear(text);
             }
-            else if (sender == Delenie)
+            else if (sender == Delenie) //Деление на один
             {
                 znachenie = double.Parse(TextB.Text);
                 TextB.Clear();
                 TextB.Text += 1.0 / znachenie;
             }
-            else if (sender == MINUSorPLUS)
+            else if (sender == MINUSorPLUS) //Постановка "+" или "-" перед числом
             {
-                int i = 1;
-                if (Min_Plus == 1 && i == 1)
-                {
-                    znachenie = -1 * double.Parse(TextB.Text);
-                    TextB.Clear();
-                    TextB.Text += znachenie;
-                    Min_Plus = 0;
-                    i--;
-                }
-                if (Min_Plus == 0 && i == 1)
-                {
-                    znachenie = double.Parse(TextB.Text);
-                    TextB.Text = "-";
-                    TextB.Text += znachenie;
-                    Min_Plus++;
-                }
+                znachenie = double.Parse(TextB.Text);
+                TextB.Clear();
+                TextB.Text += MathSyst.MorP(znachenie);
             }
-            else if (sender == addition)
+            else if (sender == addition) //Сложение
             {
                 if (kol==0)
                 {
@@ -196,6 +238,48 @@ namespace я_и_толя
                 TextB.Clear();
                 N1 = text;
                     kol++;
+                }
+                else if(entrance==true)
+                {
+                    double dn1, dn2, res = 0;
+                    dn1 = double.Parse(N1);
+                    if ((kol == 3 && D2 == "/") || (entrance == true && D2 == "/"))
+                    {
+                        kol = 0;
+                        znachenie = double.Parse(N3) / double.Parse(text);
+                        TextB.Clear();
+                        TextB.Text += znachenie;
+                    }
+                    else if ((kol == 3 && D2 == "*") || (entrance == true && D2 == "*"))
+                    {
+                        kol = 0;
+                        znachenie = double.Parse(N3) * double.Parse(text);
+                        TextB.Clear();
+                        TextB.Text += znachenie;
+                    }
+                    if (TextB.Text == "")
+                    {
+                        TextB.Text = text;
+                        D = D2;
+                    }
+                    dn2 = double.Parse(TextB.Text);
+                    if (D == "-" || D == "*" || D == "+" || D == "/")
+                    {
+                        TextB.Clear();
+                        if (D == "-")
+                            res = dn1 - dn2;
+                        else if (D == "*")
+                            res = dn1 * dn2;
+                        else if (D == "/")
+                            res = dn1 / dn2;
+                        else if (D == "+")
+                            res = dn1 + dn2;
+                        TextB.Text += res;
+                    }
+                    kol = 1;
+                    D = "+";
+                    N1 = TextB.Text;
+                    slog = true;
                 }
                 else if(kol==1)
                 {
@@ -222,7 +306,7 @@ namespace я_и_толя
                 }
 
             }
-            else if (sender == minus)
+            else if (sender == minus) //Вычетание
             {
 
                 if (kol == 0)
@@ -231,6 +315,48 @@ namespace я_и_толя
                     TextB.Clear();
                     N1 = text;
                     kol++;
+                }
+                else if (entrance == true)
+                {
+                    double dn1, dn2, res = 0;
+                    dn1 = double.Parse(N1);
+                    if ((kol == 3 && D2 == "/") || (entrance == true && D2 == "/"))
+                    {
+                        kol = 0;
+                        znachenie = double.Parse(N3) / double.Parse(text);
+                        TextB.Clear();
+                        TextB.Text += znachenie;
+                    }
+                    else if ((kol == 3 && D2 == "*") || (entrance == true && D2 == "*"))
+                    {
+                        kol = 0;
+                        znachenie = double.Parse(N3) * double.Parse(text);
+                        TextB.Clear();
+                        TextB.Text += znachenie;
+                    }
+                    if (TextB.Text == "")
+                    {
+                        TextB.Text = text;
+                        D = D2;
+                    }
+                    dn2 = double.Parse(TextB.Text);
+                    if (D == "-" || D == "*" || D == "+" || D == "/")
+                    {
+                        TextB.Clear();
+                        if (D == "-")
+                            res = dn1 - dn2;
+                        else if (D == "*")
+                            res = dn1 * dn2;
+                        else if (D == "/")
+                            res = dn1 / dn2;
+                        else if (D == "+")
+                            res = dn1 + dn2;
+                        TextB.Text += res;
+                    }
+                    kol = 1;
+                    D = "-";
+                    N1 = TextB.Text;
+                    slog = true;
                 }
                 else if (kol == 1)
                 {
@@ -242,7 +368,7 @@ namespace я_и_толя
                         TextB.Clear();
                         TextB.Text += znachenie;
                         N1 = TextB.Text;
-                    step = Convert.ToDouble(TextB.Text);
+                        step = Convert.ToDouble(TextB.Text);
 
                     }
                     else if (D != D2 && D2 == "-")
@@ -259,7 +385,7 @@ namespace я_и_толя
 
                 }
             }
-            else if (sender == multiply)
+            else if (sender == multiply) //Умножение
             {
                 if (kol == 0)
                 {
@@ -267,6 +393,18 @@ namespace я_и_толя
                     TextB.Clear();
                     N1 = text;
                     kol++;
+                }
+                else if ((D != D2) && g == 1 && kol!=1)
+                {
+                    znachenie = double.Parse(N3) * double.Parse(text);
+                    g = 0;
+                    kol = 2;
+                    TextB.Clear();
+                    TextB.Text += znachenie;
+                    N3 = TextB.Text;
+                    entrance = true;
+                    D2 = "*";
+
                 }
                 else if (kol == 1)
                 {
@@ -284,9 +422,14 @@ namespace я_и_толя
                         kol += 2;
                         N3 = text;
                     }
+                    entrance = true;
+
                 }
+                g++;
+
+
             }
-            else if (sender == division)
+            else if (sender == division) //Деление
             {
                 if (kol == 0)
                 {
@@ -294,6 +437,18 @@ namespace я_и_толя
                     TextB.Clear();
                     N1 = text;
                     kol++;
+                }
+                else if ((D != D2) && g == 1)
+                {
+                    znachenie = double.Parse(N3) * double.Parse(text);
+                    g = 0;
+                    kol = 2;
+                    TextB.Clear();
+                    TextB.Text += znachenie;
+                    N3 = TextB.Text;
+                    entrance = true;
+                    D2 = "/";
+
                 }
                 else if (kol == 1)
                 {
@@ -312,27 +467,24 @@ namespace я_и_толя
                         kol += 2;
                         N3 = text;
                     }
+                    entrance = true;
+
                 }
+                g++;
                
             }
-            else if (sender == ln)
-            {
-                znachenie = double.Parse(TextB.Text);
-                TextB.Clear();
-                TextB.Text += Lognat(znachenie);
-            }
-            else if (sender == equally)
+            else if (sender == equally) //Расчёт всех значений
             {
                 double dn1, dn2, res = 0;
                 dn1 = double.Parse(N1);
-                if (kol == 3 && D2=="/")
+                if ((kol == 3 && D2=="/")|| (entrance == true && D2 == "/"))
                 {
                     kol = 0;
                     znachenie = double.Parse(N3) / double.Parse(text);
                     TextB.Clear();
                     TextB.Text += znachenie;
                 }
-                else if (kol == 3 && D2 == "*")
+                else if ((kol == 3 && D2 == "*")|| (entrance == true && D2 == "*"))
                 {
                     kol = 0;
                     znachenie = double.Parse(N3) * double.Parse(text);
@@ -360,35 +512,29 @@ namespace я_и_толя
                 }
                 kol = 0;
             }
-            else if (sender != comma)
+            else if (sender == ln) //Натуральный логорифм 
+            {
+                znachenie = double.Parse(TextB.Text);
+                TextB.Clear();
+                TextB.Text += Math.Log(znachenie);
+            }
+            else if (sender == lg) //Десятичный логорифм
+            {
+                znachenie = double.Parse(TextB.Text);
+                TextB.Clear();
+                TextB.Text += Math.Log10(znachenie);
+            }
+            else if (sender != comma) //Ввод на экран
             { TextB.Text += stroka; }
 
         }
-        
         static public double Lognat(double x, int n = 1, double znat = 1e-5)
         {
             double t = MathSyst.Power(-1, n + 1) * MathSyst.Power(x - 1, n) / n;
             long b = (long)t;
-            if (MathSyst.Abs(b) < znat)
-            var t = MathSyst.Power(-1, n + 1) * MathSyst.Power(x - 1, n) / n;
             if (MathSyst.Abs(t) < 1e-3)
                 return t;
             return b + Lognat(x, n + 1, znat);
         }
-        //округление
-        /* static string Round(string x)
-         {
-             int legthn = x.Length;
-             double y = double.Parse(x);
-             double okr = y % 10;
-             double r = Clear(y);
-             if (okr>=5)
-             {
-
-             }
-             return x;
-         }
-        */
-
     }
 }
