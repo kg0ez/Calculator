@@ -75,7 +75,7 @@ VerticalAlignment="Center" Cursor="Hand"></Label>
 
         <Button x:Name="Расчёт_интегралов" Click="Расчёт_интегралов_Click" Grid.Column="5" Grid.ColumnSpan="4" Background="#b87a0f" Width="157" Margin="60.2,20,71.6,14.8"
 VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" Height="30">Расчёт интегралов ⋮</Button>
-        <TextBox x:Name="TextB" Grid.ColumnSpan="8" Background="#ffff" FontSize="16" FontFamily="Times New Roman" Padding="10 20 0 0" Margin="1,55,71.6,12.6" Grid.RowSpan="2" Grid.Column="1"  />
+        <TextBox x:Name="TextB" Grid.ColumnSpan="8" PreviewTextInput="TextB_PreviewTextInput" Background="#ffff" FontSize="16" FontFamily="Times New Roman" Padding="10 20 0 0" Margin="1,55,71.6,12.6" Grid.RowSpan="2" Grid.Column="1"  />
         <Button Width="55" Height="55" Content="C" Grid.Column="1" Grid.Row="2" Template="{StaticResource CircleFormGray}" Style="{StaticResource MouseIsOut}"/>
         <Button Width="55" Height="55" Content="🡄" Grid.Column="2" Grid.Row="2" x:Name="back" Template="{StaticResource CircleFormGray}" Style="{StaticResource MouseIsOut}"/>
         <Button Width="55" Height="55" Content="%" Grid.Column="3" Grid.Row="2" x:Name="Ostatok" Template="{StaticResource CircleFormGray}" Style="{StaticResource MouseIsOut}"/>

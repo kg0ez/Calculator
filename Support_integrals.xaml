@@ -1,0 +1,37 @@
+﻿<Window x:Class="я_и_толя.Support_integrals"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:я_и_толя"
+        mc:Ignorable="d"
+        Title="Справка" Height="450" Width="600" ResizeMode="NoResize">
+
+    <Grid Background="#FF494946" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Border Width="450" Background="White" Height="2" Grid.ColumnSpan="2" Margin="71,23,72.6,35"></Border>
+        <TextBlock Foreground="White" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" FontWeight="Medium" Margin="141,36,126.6,0" Padding="10 0 0 0" Width="326"> Инструкция по расчёту интегралов</TextBlock>
+        <TextBlock FontSize="18" Grid.Row="1" Padding="40 0 40 0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3" TextWrapping="Wrap"  Foreground="White" Margin="0,26,-0.4,34">С помощью данной программы вы можете рассчитать интегралы функций. Доступно два численных метода расчёта интегралов : метод трапеций, метод Симпсона.
+        </TextBlock >
+        <TextBlock FontSize="18" Grid.Row="2" Grid.Column="0" Padding="40 0 40 0" Margin="0,58,-0.4,37" Grid.ColumnSpan="2" Grid.RowSpan="5" Foreground="White" TextWrapping="Wrap">
+            Для расчёта интеграла необходимо выбрать функцию в развёртывающемся списке. Далее необходимо заполнить следующие поля: "Нижний предел a", "Верхний предел b", "Количество отрезков n".
+            Точность рассчёта зависит от количества отрезков n. Тем не менее не рекомендуется указывать больее 1 млн. отрезков, так как могут возникнуть проблемы с вычислением.
+        </TextBlock>
+        <Border Grid.Row="6" Width="450" Background="White" Height="2" Grid.ColumnSpan="2" Margin="71,21,72.6,37"></Border>
+
+    </Grid>
+</Window>

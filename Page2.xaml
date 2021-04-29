@@ -7,7 +7,15 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="650"
       Title="Page2">
-
+    <Page.Resources>
+        <Style x:Key="MouseIsOut" TargetType="Button">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Opacity" Value="0.8"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
     <Grid Background="#000">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -29,22 +37,22 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="PgTwo_Text" Grid.ColumnSpan="4" Background="#ffff" FontSize="16" FontFamily="Times New Roman" Padding="10 20 0 0" Margin="60,0.2,10.8,12.6" Grid.Column="3" Grid.Row="1" />
-        <TextBlock Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" Foreground="White" HorizontalAlignment="Center" FontSize="18" VerticalAlignment="Bottom" Margin="60,0,20.2,14.8">Результат :</TextBlock>
-        <Button x:Name="But1" Grid.Column="5" Background="Orange" Click="But1_Click" Content="Назад" Margin="39.8,20,9.8,14.8" Grid.ColumnSpan="2" FontSize="15" FontWeight="Bold" Height="30"/>
+        <TextBlock Grid.Row="0" Grid.Column="3" Padding="5 0 0 0" Grid.ColumnSpan="2" Foreground="White" HorizontalAlignment="Center" FontSize="18" VerticalAlignment="Bottom" Margin="48,0,10.2,14.8" Width="105" Height="25">Результат :</TextBlock>
+        <Button x:Name="But1" Grid.Column="5" Background="Orange" Click="But1_Click" Content="Назад" Padding="0 0 0 3" Margin="39.8,20,9.8,14.8" Grid.ColumnSpan="2" FontSize="15" FontWeight="Bold" Height="30"/>
         <!--Метод трапеций-->
         <GroupBox Grid.ColumnSpan="6" Grid.Column="1" Header="Метод трапеций" Foreground="White" HorizontalAlignment="Left" Height="128" Grid.Row="2" Grid.RowSpan="3" VerticalAlignment="Top" Width="476" Opacity="0.8" FontSize="16" FontWeight="Bold" />
         <!--Предел а-->
         <TextBlock Text="Предел а = " Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="40 20 0 0"
         HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center" FontSize="18" FontWeight="Medium" Width="100"/>
-        <TextBox x:Name="Trapec_a" Grid.Row="2" Grid.Column="2" Height="30" Grid.ColumnSpan="2" Width="70" HorizontalAlignment="Left" Margin="60 20 0 0" Padding="5 6 0 0"></TextBox>
+        <TextBox x:Name="Trapec_a" PreviewTextInput="TextB_PreviewTextInput" Grid.Row="2" Grid.Column="2" Height="30" Grid.ColumnSpan="2" Width="70" HorizontalAlignment="Left" Margin="60 20 0 0" Padding="5 6 0 0"></TextBox>
         <!--Предел b-->
         <TextBlock Text="Предел b = " Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Margin="10 20 0 0"
         HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Center" FontSize="18" FontWeight="Medium" Width="100"/>
-        <TextBox x:Name="Trapec_B" Grid.Row="2" Grid.Column="5" Height="30" Grid.ColumnSpan="2" Width="70" HorizontalAlignment="Left" Margin="35 20 0 0" Padding="5 6 0 0"></TextBox>
+        <TextBox x:Name="Trapec_B" PreviewTextInput="TextB_PreviewTextInput" Grid.Row="2" Grid.Column="5" Height="30" Grid.ColumnSpan="2" Width="70" HorizontalAlignment="Left" Margin="35 20 0 0" Padding="5 6 0 0"></TextBox>
         <!--Количество отрезков-->
         <TextBlock Text="Количество отрезков n = " Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" VerticalAlignment="Center" Margin="40 0 0 0"
         HorizontalAlignment="Left" Foreground="White" FontSize="18" FontWeight="Medium" />
-        <TextBox x:Name="Trapec_N" Grid.Row="3" Grid.Column="4" Height="30" Width="80" HorizontalAlignment="Left" Margin="20 0 0 0" Grid.ColumnSpan="2" Padding="5 6 0 0" ></TextBox>
+        <TextBox x:Name="Trapec_N" PreviewTextInput="TextB_PreviewTextInput" Grid.Row="3" Grid.Column="4" Height="30" Width="80" HorizontalAlignment="Left" Margin="20 0 0 0" Grid.ColumnSpan="2" Padding="5 6 0 0" ></TextBox>
         <RadioButton x:Name="TrBut" GroupName="Methods" Grid.Column="1" Grid.Row="2" Margin="15 25 0 0"/>
         <Button Margin="20 0 0 0" Grid.ColumnSpan="2" Grid.Column="5" Grid.Row="3" Width="100" Cursor="Hand" Click="Button_Trapec" >
             <Button.Template>
@@ -62,15 +70,15 @@
         <!--Предел а-->
         <TextBlock Text="Предел а = " Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="40 0 0 0"
         HorizontalAlignment="Left" Foreground="White" FontSize="18" FontWeight="Medium" Width="100"/>
-        <TextBox x:Name="Simp_a" Grid.Row="5" Grid.Column="2" Height="30" Grid.ColumnSpan="2" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60 0 0 0" Padding="5 6 0 0"></TextBox>
+        <TextBox x:Name="Simp_a" PreviewTextInput="TextB_PreviewTextInput" Grid.Row="5" Grid.Column="2" Height="30" Grid.ColumnSpan="2" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60 0 0 0" Padding="5 6 0 0"></TextBox>
         <!--Предел b-->
         <TextBlock Text="Предел b = " Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="2" Margin="10 0 0 0"
         HorizontalAlignment="Left" Foreground="White" VerticalAlignment="Top" FontSize="18" FontWeight="Medium" Width="100"/>
-        <TextBox x:Name="Simp_b" Grid.Row="5" Grid.Column="5" Height="30" Grid.ColumnSpan="2" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35 0 0 0" Padding="5 6 0 0"></TextBox>
+        <TextBox x:Name="Simp_b" PreviewTextInput="TextB_PreviewTextInput" Grid.Row="5" Grid.Column="5" Height="30" Grid.ColumnSpan="2" Width="70" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35 0 0 0" Padding="5 6 0 0"></TextBox>
         <!--Количество отрезков-->
         <TextBlock Text="Количество отрезков n = " Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="4" VerticalAlignment="Top" Margin="40 -15 0 0"
         HorizontalAlignment="Left" Foreground="White" FontSize="18" FontWeight="Medium" />
-        <TextBox x:Name="Simp_n" Grid.Row="6" Grid.Column="4" Height="30" Width="80" HorizontalAlignment="Left" Margin="20 -15 0 0" VerticalAlignment="Top"
+        <TextBox x:Name="Simp_n" PreviewTextInput="TextB_PreviewTextInput" Grid.Row="6" Grid.Column="4" Height="30" Width="80" HorizontalAlignment="Left" Margin="20 -15 0 0" VerticalAlignment="Top"
  
         Grid.ColumnSpan="2" Padding="5 6 0 0" ></TextBox>
         <RadioButton x:Name="SimpBut" GroupName="Methods" Grid.Column="1" Grid.Row="5" Margin="15 -5 0 0"/>
@@ -84,6 +92,17 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        <Button Style="{StaticResource MouseIsOut}" Click="GetHelp_Click" Grid.Column="7" Grid.Row="1" Cursor="Hand" Margin="-40 0 0 10">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Ellipse Fill="Gray" Width="40" Height="40"></Ellipse>
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontWeight="Medium">?</Label>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
 
         <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="0 25 0 0 " Foreground="White" FontSize="18" FontWeight="Medium">Выберите функцию</TextBlock>
         <!--Функции-->
@@ -107,6 +126,19 @@
             <ComboBoxItem Name="f5">
                 <Image Source="Images\f5.png" Height="54" Width="114"></Image>
             </ComboBoxItem>
+
+            <ComboBoxItem Name="f6">
+                <Image Source="Images\f6.png" Height="54" Width="114"></Image>
+            </ComboBoxItem>
+
+            <ComboBoxItem Name="f7">
+                <Image Source="Images\f7.png" Height="54" Width="114"></Image>
+            </ComboBoxItem>
+
+            <ComboBoxItem Name="f8">
+                <Image Source="Images\f8.png" Height="54" Width="114"></Image>
+            </ComboBoxItem>
         </ComboBox>
+        
     </Grid>
 </Page>
