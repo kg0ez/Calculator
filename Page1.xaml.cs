@@ -29,6 +29,8 @@ namespace я_и_толя
             NavigationService.Navigate(new Page2());
 
         }
+        public double znachenie,value, step;
+        public int quantity = 0, onecomma = 0,kol=0,g=0, sqrtchisl=0;
         public double znachenie;
         public double sqrt234;
         public double step, otvet=0;
@@ -545,9 +547,10 @@ namespace я_и_толя
         static public double Lognat(double x, int n = 1, double znat = 1e-5)
         {
             double t = MathSyst.Power(-1, n + 1) * MathSyst.Power(x - 1, n) / n;
+            long b = (long)t;
             if (MathSyst.Abs(t) < 1e-3)
                 return t;
-            return t + Lognat(x, n + 1, znat);
+            return b + Lognat(x, n + 1, znat);
         }
     }
 }
