@@ -91,11 +91,14 @@ namespace я_и_толя
 
             if (TrBut.IsChecked == true)
             {
-                PgTwo_Text.Text = Convert.ToString(TrapecMethod(Convert.ToDouble(Trapec_a.Text), Convert.ToDouble(Trapec_B.Text), Convert.ToInt32(Trapec_N.Text)));
-            }
-            else if (Trapec_a.Text == "" || Trapec_B.Text == "" || Trapec_N.Text == "")
-            {
-                MessageBox.Show("Не все поля заполнены");
+                if (Trapec_a.Text == "" || Trapec_B.Text == "" || Trapec_N.Text == "")
+                {
+                    MessageBox.Show("Не все поля заполнены");
+                }
+                else
+                {
+                    PgTwo_Text.Text = Convert.ToString(TrapecMethod(Convert.ToDouble(Trapec_a.Text), Convert.ToDouble(Trapec_B.Text), Convert.ToInt32(Trapec_N.Text)));
+                }
             }
             else
             {
@@ -108,11 +111,14 @@ namespace я_и_толя
         {
             if (SimpBut.IsChecked == true)
             {
-                PgTwo_Text.Text = Convert.ToString(SimpsonMethod(Convert.ToDouble(Simp_a.Text), Convert.ToDouble(Simp_b.Text), Convert.ToInt32(Simp_n.Text)));
-            }
-            else if (Simp_a.Text==""||Simp_b.Text==""|| Simp_n.Text=="")
-            {
-                MessageBox.Show("Не все поля заполнены");
+                if (Trapec_a.Text == "" || Trapec_B.Text == "" || Trapec_N.Text == "")
+                {
+                    MessageBox.Show("Не все поля заполнены");
+                }
+                else
+                {
+                    PgTwo_Text.Text = Convert.ToString(SimpsonMethod(Convert.ToDouble(Simp_a.Text), Convert.ToDouble(Simp_b.Text), Convert.ToInt32(Simp_n.Text)));
+                }
             }
             else
             {
