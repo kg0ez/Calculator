@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Кaлькулятор;
 
 namespace я_и_толя
 {
@@ -22,14 +23,12 @@ namespace я_и_толя
     {
         public MainWindow()
         {
+            SplashScreen splashScreen = new SplashScreen("Images/iconfinder_calculator_1291736.png");
+            splashScreen.Show(true);
             InitializeComponent();
             MainFrame.Content = new Page1();
 
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }

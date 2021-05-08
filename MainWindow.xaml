@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:я_и_толя"
         mc:Ignorable="d"
         Title="Калькулятор" Height="480" Width="650"
-        ResizeMode="NoResize">
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen">
+        
     <Frame Name="MainFrame" Background="Black" NavigationUIVisibility="Hidden"/>
 </Window>

@@ -112,4 +112,5 @@ VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" FontWeight
         <Button Width="55" Height="55" Content="+/-" Grid.Row="2" Grid.Column="5" x:Name="MINUSorPLUS" Template="{StaticResource CircleForm2}" Style="{StaticResource MouseIsOut}"/>
         <Button Width="55" Height="55" Content="1/x" Grid.Row="5" Grid.Column="5" x:Name="Delenie" Template="{StaticResource CircleForm2}" Style="{StaticResource MouseIsOut}"/>
     </Grid>
+    
 </Page>

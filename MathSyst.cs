@@ -42,15 +42,21 @@ namespace я_и_толя
         //степень
         static public double Power(double x, double n)
         {
-            if (n == 0)
-                return 1;
-            if (n % 2 == 0)
-            {
-                var p = Power(x, n / 2);
-                return p * p;
-            }
-            else
-                return x * Power(x, n - 1);
+                if (Convert.ToInt32(n) == Convert.ToDouble(n))
+                {
+                    if (n == 0)
+                        return 1;
+                    if (n % 2 == 0)
+                    {
+                        var p = Power(x, n / 2);
+                        return p * p;
+                    }
+                    else
+                        return x * Power(x, n - 1);
+                }
+                else return Math.Pow(x, n);
+
+
         }
         //Очистка
         static public string Clear(string value)
@@ -110,7 +116,49 @@ namespace я_и_толя
                 x0 = x1;
                 x1 = (1 / n) * ((n - 1) * x0 + A / Power(x0, (int)n - 1));
             }
-            return x1;
+            var x2 = x1 % 1;
+            var x3 = x1 - x2;
+            double x4 = 1;
+            for (int i = 0; i < n; i++)
+                x4 *= (double)x3;
+            if (x4 == A)
+                return x3;
+            else
+                return x1;
+        }
+        public static double Cos_Sin(double x, double s)
+        {
+            if (s == 0)
+            {
+                if(x==30)
+                    x=0.5;
+                if (x == 90)
+                    x = 1;
+                if (x == 180)
+                    x = 0;
+                if (x == 270)
+                    x = -1;
+            }
+            if (s == 1)
+            {
+                if (x == 60)
+                    x = 0.5;
+                if (x == 90)
+                    x = 0;
+                if (x == 180)
+                    x = -1;
+                if (x == 270)
+                    x = 0;
+            }
+            return x;
+        }
+        static public double Lognat(double x, int n = 1, double znat = 1e-5)
+        {
+            double t = MathSyst.Power(-1, n + 1) * MathSyst.Power(x - 1, n) / n;
+            long b = (long)t;
+            if (MathSyst.Abs(t) < 1e-3)
+                return t;
+            return b + Lognat(x, n + 1, znat);
         }
     }
 }
