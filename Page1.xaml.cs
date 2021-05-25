@@ -469,7 +469,7 @@ namespace я_и_толя
                         D2 = "+";
                 }
             }
-            else if (sender == minus) //Вычетание
+            else if (sender == minus) //Вычитание
             {
                 if (doubleznak >= 1) { 
                 if (kol == 0)//Запоминание первого действия
@@ -585,7 +585,7 @@ namespace я_и_толя
                     
                 }
                 onecomma = 0;
-                    doubleznak = 0;
+                doubleznak = 0;
                 }
                 else
                 {
@@ -861,7 +861,7 @@ namespace я_и_толя
                         TextB.Text += res;
                     }
                         //Возращение значений
-                        quantity = 0; onecomma = 0; kol = 0; g = 0; sqrtchisl = 0; shag = 0; doubleznak = 0;
+                        quantity = 0; onecomma = 0; g = 0; kol = 0; sqrtchisl = 0; shag = 0; doubleznak = 1;
                         znachenie = 0; value = 0; step = 0; razndeistv = 0; ymno = 0; delenn = 0;
                         entrance = false; slog = false;
                         D = ""; D2 = ""; N1 = ""; N3 = "";
@@ -874,15 +874,24 @@ namespace я_и_толя
             }
             else if (sender == ln) //Натуральный логорифм 
             {
-                znachenie = double.Parse(TextB.Text);
-                TextB.Clear();
-                TextB.Text += Math.Log(znachenie);
+                try
+                {
+                    znachenie = double.Parse(TextB.Text);
+                    TextB.Clear();
+                    TextB.Text += Math.Log(znachenie);
+                }
+                catch
+                { TextB.Text = "Ошибка"; }
             }
             else if (sender == lg) //Десятичный логорифм
             {
+                try { 
                 znachenie = double.Parse(TextB.Text);
                 TextB.Clear();
                 TextB.Text += Math.Log10(znachenie);
+                }
+                catch
+                { TextB.Text = "Ошибка"; }
             }
             else if (sender != comma) //Ввод на экран
             { TextB.Text += stroka;
